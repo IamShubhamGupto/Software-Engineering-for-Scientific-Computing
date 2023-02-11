@@ -7,13 +7,13 @@ wget https://web.math.princeton.edu/~perezgiz/usdec.txt
 
 ## Solution
 ```
-tr A-Z a-z < usdec.txt | tr -d ":,.\t"| tr ' ' '\n' | sort | uniq -c | sort -nr | head -10 | tee  usdechistogram.txt
+tr 'A-Z\n' 'a-z ' < usdec.txt | tr -d ":,.;\t" | tr -cs "[:alpha:]" "\n" | sort | uniq -c | sort -rn | head -10 | tee usdechistogram.txt
 ```
 
 ### Workflow
-- Convert upper case to lower case
+- Convert upper case to lower case and replace new line with spaces
 - Delete unnecessary characters
-- Replace new lines with space
+- Print one word per line
 - Sort lines based on first character
 - Count number of occurences of each line
 - Sort words by numerical value in descending order
