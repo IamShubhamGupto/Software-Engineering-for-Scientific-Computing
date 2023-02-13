@@ -7,7 +7,7 @@ wget https://web.math.princeton.edu/~perezgiz/usdec.txt
 
 ## Solution
 ```
-tr 'A-Z\n' 'a-z ' < usdec.txt | tr -d ":,.;\t" | tr -cs "[:alpha:]" "\n" | sort | uniq -c | sort -rn | head -10 | tee usdechistogram.txt
+tr -d ":,.;'\t" < usdec.txt | tr -cs "[:alpha:]" "\n" | sort | uniq -ci | sort -rn | head -10 | tee usdechistogram.txt
 ```
 
 ### Workflow
